@@ -7,6 +7,7 @@ module.exports = {
         ...postResolvers.Query
     },
     Mutation:{
-        ...postResolvers.Mutation
+        ...postResolvers.Mutation,
+        ...userResolvers.Mutation
     }
 }

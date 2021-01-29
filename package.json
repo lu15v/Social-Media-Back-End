@@ -5,7 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "apollo-server": "^2.19.2",
+    "bcryptjs": "^2.4.3",
     "graphql": "^15.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.13"
   },
   "scripts": {
