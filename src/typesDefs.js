@@ -32,6 +32,7 @@ input RegisterInput{
 
 type Mutation{
     createPost(input: createPost): Post,
-    register(registerInput: RegisterInput): User
+    register(registerInput: RegisterInput): User,
+    login(username: String!, password: String!): User
 }
 `
