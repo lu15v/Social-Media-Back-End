@@ -28,6 +28,7 @@ input RegisterInput{
 
 type Mutation{
     createPost(body: String!): Post,
+    deletePost(postId: ID!): String!
     register(registerInput: RegisterInput): User,
     login(username: String!, password: String!): User
 }

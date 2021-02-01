@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const checkAuth = require('../utils/check-auth');
+const {AuthenticationError} = require('apollo-server');
 
 module.exports = {
     Query:{
@@ -38,6 +39,25 @@ module.exports = {
 
                  await post.save();
                  return post;
+             }catch(err){
+                 throw new Error(err);
+             }
+         },
+         async deletePost(_, {postId}, context){
+             const user = checkAuth(context);
+
+             try{
+                 const post = await Post.findById(postId);
+                 if(post){
+                     if(user.username !== post.username){
+                         throw new AuthenticationError("Action not allowed");
+                     }
+                     
+                     post.delete();
+                     return "Post deleted successfully";
+                 }
+                 throw new Error("Post not found");
+
              }catch(err){
                  throw new Error(err);
              }
