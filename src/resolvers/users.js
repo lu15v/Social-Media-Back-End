@@ -20,11 +20,11 @@ module.exports = {
 
             const {errors, valid} = validateLoginInput(username, password);
 
-            const user = await User.findOne({username});
-
             if(!valid){
                 throw new UserInputError('Errors', {errors})
             }
+
+            const user = await User.findOne({username});
 
             if(!user){
                 errors.general = 'User not found';
@@ -74,7 +74,7 @@ module.exports = {
             const res = await newUser.save();
 
             const token = generateToken(res);
-            
+
             return {
                 ...res._doc,
                 id: res._id,

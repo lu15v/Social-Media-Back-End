@@ -9,6 +9,7 @@ type Post{
 }
 type Query{
     getPosts: [Post]
+    getPost(postId: ID!): Post
 }
 type User{
     id: ID!
@@ -16,11 +17,6 @@ type User{
     token: String!
     username: String!
     createdAt: String!
-}
-
-input createPost{
-    body: String!,
-    username: String!
 }
 
 input RegisterInput{
@@ -31,7 +27,7 @@ input RegisterInput{
 }
 
 type Mutation{
-    createPost(input: createPost): Post,
+    createPost(body: String!): Post,
     register(registerInput: RegisterInput): User,
     login(username: String!, password: String!): User
 }
