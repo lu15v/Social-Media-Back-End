@@ -10,7 +10,8 @@ const __PORT__ = 5000;
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({req}) => ({req})
 });
 
 mongoose
