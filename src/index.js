@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const typeDefs = require('./typesDefs');
 const resolvers = require('./resolvers/resolvers');
 const {MONGODB} = require('../config');
-const User = require('./models/User');
 
 const __PORT__ = 5000;
 
