@@ -50,7 +50,7 @@ type Mutation{
     register(registerInput: RegisterInput): User,
     login(username: String!, password: String!): User,
     createComment(postId: ID!, body: String!): Post!,
-    deleteComment(postId: ID!, commentId: String!): Post!
+    deleteComment(postId: ID!, commentId: ID!): Post!
     likePost(postId: ID!): Post!
 }
 `
