@@ -2,7 +2,8 @@ module.exports.validateRegisterInput = (
     username,
     email,
     password,
-    confirmPassword
+    confirmPassword,
+    avatar
 ) => {
     const errors = {};
 
@@ -19,6 +20,8 @@ module.exports.validateRegisterInput = (
     }else{
         if(confirmPassword !== password) errors.confirmPassword = "Password does not match";
     }
+
+    if(!avatar.trim()) errors.avatar = "You must choose an avatar";
 
     return{
         errors,

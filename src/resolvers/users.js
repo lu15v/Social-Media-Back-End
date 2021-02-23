@@ -10,7 +10,8 @@ const generateToken = (user) =>{
     return jwt.sign({
         id: user.id,
         email: user.email,
-        username: user.username
+        username: user.username,
+        avatar: user.avatar
     }, SECRET_KEY, {expiresIn: '1h'});
 }
 
@@ -46,7 +47,7 @@ module.exports = {
                 token
             }
         },
-        async register(_, {registerInput: {username, password, confirmPassword, email}}){
+        async register(_, {registerInput: {username, password, confirmPassword, email, avatar}}){
 
             const user = await User.findOne({username});
 
@@ -58,7 +59,7 @@ module.exports = {
                 })
             }
 
-            const {valid, errors} = validateRegisterInput(username, email, password, confirmPassword);
+            const {valid, errors} = validateRegisterInput(username, email, password, confirmPassword, avatar);
             
             if(!valid){
                 throw new UserInputError('Errors', {errors})
@@ -68,7 +69,8 @@ module.exports = {
             const newUser = new User({
                 username,
                 password,
-                email
+                email,
+                avatar
             });
 
             const res = await newUser.save();

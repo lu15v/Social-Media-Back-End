@@ -39,7 +39,8 @@ module.exports = {
                  const post = new Post({
                      body,
                      user: user.id,
-                     username: user.username
+                     username: user.username,
+                     avatar: user.avatar
                  });
 
                  await post.save();

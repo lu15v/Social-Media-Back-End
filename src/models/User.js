@@ -13,7 +13,8 @@ const userSchema = new Schema({
     createdAt: {
         type: Date, 
         default: Date.now
-    }
+    },
+    avatar: String
 });
 
 module.exports =  model('User', userSchema);

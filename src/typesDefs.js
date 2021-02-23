@@ -6,6 +6,7 @@ type Post{
     body: String!,
     createdAt: String,
     username: String!,
+    avatar: String!
     comments: [Comment]!,
     likes: [Like]!,
     likeCount: Int!,
@@ -35,6 +36,7 @@ type User{
     token: String!
     username: String!
     createdAt: String!
+    avatar: String!
 }
 
 input RegisterInput{
@@ -42,6 +44,7 @@ input RegisterInput{
     password: String!
     confirmPassword: String!
     email: String!
+    avatar: String!
 }
 
 type Mutation{
