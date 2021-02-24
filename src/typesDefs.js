@@ -17,6 +17,7 @@ type Comment{
     id: ID!,
     createdAt: String,
     username: String!,
+    avatar: String!,
     body: String!,
 }
 

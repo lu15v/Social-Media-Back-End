@@ -6,7 +6,7 @@ module.exports = {
 
     Mutation:{
         async createComment(_, {postId, body}, context){
-            const {username} = checkAuth(context);
+            const {username, avatar} = checkAuth(context);
 
             if(body.trim() === ""){
                 throw new UserInputError("Empty comment", {
@@ -22,6 +22,7 @@ module.exports = {
                 post.comments.unshift({
                     body,
                     username,
+                    avatar
                 })
                 await post.save();
                 return post;
