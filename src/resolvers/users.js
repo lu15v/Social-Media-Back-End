@@ -4,7 +4,6 @@ const {UserInputError} = require('apollo-server');
 
 const {validateRegisterInput, validateLoginInput} = require('../utils/validators');
 const User = require('../models/User');
-const {SECRET_KEY} = require('../../config');
 
 const generateToken = (user) =>{
     return jwt.sign({
@@ -12,7 +11,7 @@ const generateToken = (user) =>{
         email: user.email,
         username: user.username,
         avatar: user.avatar
-    }, SECRET_KEY, {expiresIn: '1h'});
+    }, process.env.SECRET_KEY, {expiresIn: '1h'});
 }
 
 module.exports = {
